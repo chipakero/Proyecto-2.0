@@ -34,7 +34,7 @@ public class Programacion {
 
     @Override
     public String toString() {
-        return "Programacion{" + "salas=" + salas + '}';
+        return "Programacion: " + " Salas " + salas + "\n";
     }
 
 }

@@ -12,11 +12,11 @@ package punto4;
 public class Main {
     public static void main(String[] args) {
         
-        Fecha fec = new Fecha(15,11,1968,"Jueves","Noviembre");
+        Fecha fec = new Fecha(15,11,1968, " Jueves "," Noviembre ");
         Persona Hernan = new Persona();
         Hernan.setFechaNacimiento(fec);
         
-        Fecha fec2 = new Fecha(03,11,1970,"Jueves","Noviembre");
+        Fecha fec2 = new Fecha(03,11,1970," Jueves "," Noviembre ");
         Persona Martha = new Persona();
         Martha.setFechaNacimiento(fec2);
         

@@ -37,7 +37,7 @@ public class Segmento {
 
     @Override
     public String toString() {
-        return "Segmento{" + "horaInicial=" + horaInicial + ", horaFinal=" + horaFinal + '}';
+        return " Segmento: " + " Hora Inicial: " + horaInicial + " Hora Final: " + horaFinal + "\n";
     }
     
     

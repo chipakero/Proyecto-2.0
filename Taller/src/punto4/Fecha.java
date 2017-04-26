@@ -71,7 +71,7 @@ public class Fecha {
 
     @Override
     public String toString() {
-        return "{" + "dia=" + dia + ", mes=" + mes + ", anyo=" + anyo + ", nombreDia=" + nombreDia + ", nombreMes=" + nombreMes + '}';
+        return " " + "Dia: " + dia + " Mes: " + mes + " Año: " + anyo + " Nombre Dia: " + nombreDia + " Nombre Mes: " + nombreMes + "\n";
     }
 
 }

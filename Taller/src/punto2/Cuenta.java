@@ -96,7 +96,7 @@ public class Cuenta {
 
     @Override
     public String toString() {
-        return "Cuenta{" + "numeroCuenta=" + numeroCuenta + ", balanceActual=" + balanceActual + ", fecha=" + fecha + ", nombreCliente=" + nombreCliente + ", movimientos=" + movimientos + '}';
+        return "Cuenta \n " + " Numero Cuenta: " + numeroCuenta + " BalanceActual: " + balanceActual + "Fecha: " + fecha + " Nombre Cliente: " + nombreCliente + " Movimientos: " + movimientos + "\n";
     }
     
     

@@ -58,7 +58,7 @@ public class Movimientos {
 
     @Override
     public String toString() {
-        return "Movimientos{" + "fecha=" + fecha + ", balanceAnterior=" + balanceAnterior + ", cantidad=" + cantidad + ", tipo=" + tipo + '}';
+        return " Movimientos: " + "\n Fecha: " + fecha + " BalanceAnterior: " + balanceAnterior + " Cantidad: " + cantidad + " Tipo: " + tipo + "\n";
     }
     
     

@@ -33,9 +33,8 @@ public class Persona {
     }
       public void Mostrar_mascotas(){ 
             for(Mascota a: this.Mascotas){
-                System.out.println("Nombre mascota " + a.getNombre_mas());
-                System.out.println("Nombre mascota " + a.getColor_pelo());
-                System.out.println("Nombre mascota " + a.sonido());
+                System.out.println();
+                System.out.println("Nombre mascota " + a.getNombre_mas()+ " Color del pelo "+ a.getColor_pelo()+" Sonido " + a.sonido());
             }
     } 
     

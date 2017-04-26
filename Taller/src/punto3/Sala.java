@@ -35,7 +35,7 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Sala{" + "semanas=" + semanas + '}';
+        return " Sala: " + " Semanas: " + semanas + "\n";
     }
     
     

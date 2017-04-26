@@ -37,19 +37,19 @@ public class Main {
         Date fec4 = new Date(4);
         Date fec5 = new Date(5);
                 
-        Dia funcion1 = new Dia(fec, "Lunes");
+        Dia funcion1 = new Dia(fec, " Lunes ");
         funcion1.añadirSegmento(seg);
         
-        Dia funcion2 = new Dia(fec2, "Martes");
+        Dia funcion2 = new Dia(fec2, " Martes ");
         funcion2.añadirSegmento(seg2);
         
-        Dia funcion3 = new Dia(fec3, "Miercoles");
+        Dia funcion3 = new Dia(fec3, " Miercoles ");
         funcion3.añadirSegmento(seg3);
         
-        Dia funcion4 = new Dia(fec4, "Jueves");
+        Dia funcion4 = new Dia(fec4, " Jueves ");
         funcion4.añadirSegmento(seg4);
         
-        Dia funcion5 = new Dia(fec5, "Viernes");
+        Dia funcion5 = new Dia(fec5, " Viernes ");
         funcion5.añadirSegmento(seg5);     
         
         Semana semana1 = new Semana(1);

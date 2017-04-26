@@ -62,7 +62,7 @@ public class Banco {
 
     @Override
     public String toString() {
-        return "Banco{" + "codigo=" + codigo + ", tipos=" + tipos + ", cuentas=" + cuentas + '}';
+        return "Banco \n " + " Codigo: " + codigo + " Tipo: " + tipos + " Cuentas: " + cuentas + "\n";
     }
     
     

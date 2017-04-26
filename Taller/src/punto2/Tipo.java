@@ -26,7 +26,7 @@ public class Tipo {
 
     @Override
     public String toString() {
-        return "Tipo{" + "codigo=" + codigo + '}';
+        return " Tipo " + " Codigo: " + codigo +"\n";
     }
     
     

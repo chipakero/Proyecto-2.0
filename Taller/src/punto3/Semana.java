@@ -53,7 +53,7 @@ public class Semana {
 
     @Override
     public String toString() {
-        return "Semana{" + "numero=" + numero + ", diasLaborados=" + Arrays.toString(diasLaborados) + ", salas=" + salas + '}';
+        return " Semana \n" +  " Numero: " + numero + "Dias Laborados " + Arrays.toString(diasLaborados) + " Salas=" + salas + "\n";
     }
    
     

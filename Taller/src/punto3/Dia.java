@@ -55,7 +55,7 @@ public class Dia {
 
     @Override
     public String toString() {
-        return "Dia{" + "fecha=" + fecha + ", nombre=" + nombre + ", segmentos=" + segmentos + '}';
+        return "Dia " + " Fecha: " + fecha + " Nombre: " + nombre + " Segmentos: " + segmentos + "\n";
     }
     
     
