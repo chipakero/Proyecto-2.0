@@ -22,15 +22,7 @@ public class Punto1 extends JFrame {
     public Punto1(){
     add(new NewPanel());
 }
-/**
- *
- * @author Diego
- */
 
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
       Punto1 frame= new Punto1();
       frame.setTitle("TestPaintComponent");

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pajaros;
+package Punto2;
 import java.awt.*;
 import java.awt.Color;
 import javax.swing.*;
@@ -18,8 +18,8 @@ import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Pajaros extends JFrame {
-    public Pajaros(){
+public class Punto2 extends JFrame {
+    public Punto2(){
     add(new NewPanel());
 }
 /**
@@ -27,23 +27,32 @@ public class Pajaros extends JFrame {
  * @author Diego
  */
 
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-      Pajaros frame= new Pajaros();
+      Punto2 frame= new Punto2();    
       frame.setTitle("TestPaintComponent");
-      frame.setSize(1024,512);
+      frame.setSize(1240,600);
       frame.setLocationRelativeTo(null);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setVisible(true);    
+      frame.setVisible(true);
     }  
 }
 class NewPanel extends JPanel implements ActionListener, MouseListener{
     private Timer time;
+
     private int x;
     private int y;
     private int secuencia =0;
-    int aux=0;
-     Rectangle Carro=this.getBounds();
-     Rectangle obstaculo=new Rectangle(200,200,10,10);
+    private String[] palabra1={"P","R","O","G","R","A","M","A","C","I","O","N"};
+    private String[] palabra2={"H","E","R","E","N","C","I","A"};
+    private String[] palabra3={"P","O","L","M","O","R","F","I","S","M","O"};
+    private String[] palabra4={"A","B","S","T","R","A","C","T","A"};
+    private String[] palabra5={"E","X","C","E","P","C","I","O","N"};
+    private String[] palabra6={"I","M","P","L","E","M","E","N","T","A","C","I","O","N"};
+
     public NewPanel(){
         
         this.time=new Timer(500, this);
@@ -57,72 +66,34 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-       Image fondo = loadImage("blanco.jpg");
+       Image fondo0= loadImage("blanco.jpg");
+       g.drawImage(fondo0 , 0, 0, null);
+       Image fondo = loadImage("Abecedario.jpg");
        g.drawImage(fondo,0,0,null);
-       
-       
-       
-       Image pajaro = loadImage("pajaros.gif");
-       g.drawImage(pajaro,x+100,100,x+100+148,100+129,secuencia*148, 0, secuencia*148+148, 129, this);
      
        
+      g.fillRect(420, 300, 200, 20);
+       g.fillRect(430, 50, 20, 250);
+       g.fillRect(430, 50, 180, 10);
+       g.fillRect(560, 50, 5, 50);
+       g.drawOval(545, 100, 35, 55); 
+
     }
     
     @Override
     public Rectangle getBounds(){
-        return new Rectangle(x+6,100,100,70);
+        return new Rectangle(0,0,56,70);
     }
-
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        x+=20;
-    
         
-        if(aux==0){
-            this.secuencia++;
-            if(secuencia==9){
-                aux=1;
-            }
-        }
-        if(aux==1){
-            this.secuencia--;
-             if(secuencia==0){
-                aux=0;
-            }
-        }
-        
-        
-      
-        
-        
-        repaint();
-       
-       
+    repaint();
     }
-    
-    
- public void checkCollisions(){
-     Rectangle rCicle= Carro.getBounds();
-     Rectangle rRect= obstaculo.getBounds();
-     if(rCicle.intersects(rRect)){
-         System.out.println("Colision");
-         time.stop();
-     }
- }
+ 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Point mp= e.getPoint();
-        if(getBounds().contains(mp)){         
-                time.stop(); 
-                try {
-             Thread.sleep(500);
-              time.start();
-         } catch (InterruptedException ex) {
-             Logger.getLogger(NewPanel.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        }
-        System.out.println("click");
+        
     }
 
     @Override
@@ -144,6 +115,8 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
     public void mouseExited(MouseEvent e) {
         
     }
+    
+   
     public Image loadImage(String imageName){
         ImageIcon ii = new ImageIcon(imageName);
         Image image = ii.getImage();

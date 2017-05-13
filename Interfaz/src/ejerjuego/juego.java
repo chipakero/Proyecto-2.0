@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pajaros;
-import java.awt.*;
-import java.awt.Color;
+package ejerjuego;
+
+/**
+ *
+ * @author Diego
+ */
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -13,43 +16,45 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Pajaros extends JFrame {
-    public Pajaros(){
+
+public class juego extends JFrame  {
+    public juego(){
     add(new NewPanel());
 }
-/**
- *
- * @author Diego
- */
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-      Pajaros frame= new Pajaros();
-      frame.setTitle("TestPaintComponent");
-      frame.setSize(1024,512);
+      juego frame= new juego();
+      frame.setTitle("juego");
+      frame.setSize(1024,1000);
       frame.setLocationRelativeTo(null);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setVisible(true);    
     }  
+
+   
 }
 class NewPanel extends JPanel implements ActionListener, MouseListener{
     private Timer time;
-    private int x;
-    private int y;
+    private int x,y,p,q;
     private int secuencia =0;
-    int aux=0;
-     Rectangle Carro=this.getBounds();
-     Rectangle obstaculo=new Rectangle(200,200,10,10);
     public NewPanel(){
+        addKeyListener(new TAdapter());
+        setFocusable(true);
+
         
         this.time=new Timer(500, this);
         this.time.start();
         this.x = 20;
-    
         this.addMouseListener(this);
        
     }
@@ -57,15 +62,23 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-       Image fondo = loadImage("blanco.jpg");
-       g.drawImage(fondo,0,0,null);
-       
-       
-       
-       Image pajaro = loadImage("pajaros.gif");
-       g.drawImage(pajaro,x+100,100,x+100+148,100+129,secuencia*148, 0, secuencia*148+148, 129, this);
-     
-       
+        
+       Image cielo = loadImage("blue_background.png");
+       for(int i = q-1000;i<p+2000;i+=22){
+           g.drawImage(cielo,i,0,null);
+       }
+       Image suelo = loadImage("ground_loop.png");
+        for(int i = q-1000;i<p+2000;i+=112){
+            for(int j = 500;j<1004;j+=68)
+           g.drawImage(suelo,i,j,null);
+       }
+        Image nubes=loadImage("clouds.png");
+        for(int i=q-1000;i<p+1500;i+=335){
+            g.drawImage(nubes,i,0,null);
+        }
+        Image personaje=loadImage("walking.png");
+        g.drawImage(personaje, 500, 366+y, 500+115,366+134+y,secuencia*115, 0, secuencia*115+115, 134, this);
+   System.out.println(".");
     }
     
     @Override
@@ -76,40 +89,20 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        x+=20;
-    
+       
         
-        if(aux==0){
+        if(this.secuencia==3){
+            this.secuencia=0;
+        }else
             this.secuencia++;
-            if(secuencia==9){
-                aux=1;
-            }
-        }
-        if(aux==1){
-            this.secuencia--;
-             if(secuencia==0){
-                aux=0;
-            }
-        }
-        
-        
-      
-        
-        
+
         repaint();
        
-       
     }
-    
-    
- public void checkCollisions(){
-     Rectangle rCicle= Carro.getBounds();
-     Rectangle rRect= obstaculo.getBounds();
-     if(rCicle.intersects(rRect)){
-         System.out.println("Colision");
-         time.stop();
-     }
- }
+  
+   
+
+
     @Override
     public void mouseClicked(MouseEvent e) {
         Point mp= e.getPoint();
@@ -149,5 +142,49 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
         Image image = ii.getImage();
         return image;
     }
+
+ 
+
+
+
+    class TAdapter extends KeyAdapter{
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+       
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+          int Key= e.getKeyCode();
+         if(Key==KeyEvent.VK_RIGHT){
+            System.out.println("Derecha");
+            x-=20;
+            p+=20;
+            q-=20;
+        }
+        if(Key==KeyEvent.VK_LEFT){
+            System.out.println("Izquierda");
+            x+=20;
+            p-=20;
+            q+=20;
+        }
+        if(Key==KeyEvent.VK_UP){
+            System.out.println("Arriba");
+            y-=20;
+        }
+        if(Key==KeyEvent.VK_DOWN){
+            System.out.println("Abajo");
+            y+=20;
+        }
+        
     
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("Soltó");
+    }
+    
+}
 }
