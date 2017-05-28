@@ -21,8 +21,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Random;
+
 
 public class Ninja_jump extends JFrame {
 
@@ -42,11 +42,14 @@ public class Ninja_jump extends JFrame {
 
 }
 
-class NewPanel extends JPanel implements ActionListener, MouseListener{
+class NewPanel extends JPanel implements ActionListener, MouseListener {
 
     private final Timer time;
-    private int x = 0, y = 0, z,p=0;
-    private int secuencia = 0,plataforma=0;
+    private int x = 0, y = 0, z, w = 0, p = 0;
+    private int secuencia = 0, plataforma = 0;
+    private final Random rnd = new Random();
+    private final int[] Posicion = new int[500];
+    private int x1;
 
     public NewPanel() {
         addKeyListener(new TAdapter());
@@ -65,85 +68,81 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
         for (int i = 0 + y; i > -500 - z; i -= 480) {
             g.drawImage(Fondo, 0, i, null);
         }
+        
+        
         Image StandR = loadImage("Muñeco2.png");
         Image StandL = loadImage("Muñeco1.png");
         Image Salto1 = loadImage("saltoderecha.png");
-        Image Salto2 = loadImage("saltoizquierda.png");
+        Image Salto2 = loadImage("saltoizq|ierda.png");
         Image Plataforma = loadImage("plataforma.png");
-        
+
         //TAdapter a = new TAdapter();
         //g.drawImage(StandR, 289 + x, 209, x + 289 + 100, 209 + 100, secuencia * 63, 0, secuencia * 63 + 63, 63, this);
-   
-       
-            
-        
-       
-            g.drawImage(StandL, 289+x, 209+p, x+289+100, p+209+100, secuencia * 63, 0, secuencia * 63 + 63, 63, this);
-            g.setColor(Color.white);
-            g.drawRect(0,440,640,10);
-            g.drawRect(305+x, p+209, 70, 100);
-            for(int i =0;i<1000;i+=100){
-                for(int j = 90+y;j>-500-z;j-=500)
-                    if(i%7==0){
-                        g.drawRect(i, j+y+27, 100, 20);
-                        g.drawImage(Plataforma, i, j+y, 10+45+50+i, 10+45+25+y+j, plataforma*4, 0, plataforma*45+45, 45, this);
-                    }   
-            }
-             for(int i =10;i<1000;i+=100){
-                for(int j = -120+y;j>-500-z;j-=633)
-                    if(i%7==0){
-                        g.drawRect(i, j+y+27, 100, 20);
-                        g.drawImage(Plataforma, i, j+y, 10+45+50+i, 10+45+25+y+j, plataforma*4, 0, plataforma*45+45, 45, this);
-                    }
-            }
-             for(int i =50;i<1000;i+=100){
-                for(int j = 100+y;j>-500-z;j-=311)
-                    
-                    if(i%7==0){
-                         g.drawRect(i, j+y+27, 100, 20);
-                        g.drawImage(Plataforma, i, j+y, 10+45+50+i, 10+45+25+y+j, plataforma*4, 0, plataforma*45+45, 45, this);
-                    }
-            }
-             for(int i =90;i<1000;i+=100){
-                for(int j = -120+y;j>-500-z;j-=361)
-                    
-                    if((i%7==0)){
-                         g.drawRect(i, j+y+27, 100, 20);
-                        g.drawImage(Plataforma, i, j+y, 10+45+50+i, 10+45+25+y+j, plataforma*4, 0, plataforma*45+45, 45, this);
-                    }
-            }
-            
-       
+        g.drawImage(StandL, 289 + x, z + 209 + p, x + 289 + 100, z + 209 + 100 + p, secuencia * 63, 0, secuencia * 63 + 63, 63, this);
+        g.setColor(Color.white);
+        g.drawRect(0, 440, 640, 10);
+        g.drawRect(305 + x, 209, 70, 100);
 
+        for (int i = 0 - z; i > -100 - y; i -= 210) {
+                g.drawRect(30, 35 + z, 60, 15);
+                g.drawImage(Plataforma, 30, 0 + y + i, 30 + 45, 45 + 45 + y + i, plataforma * 45, 0, plataforma * 45 + 45, 45, this);
+        }
+        for (int i = 390 - z; i > -100 - y; i -= 210) {
+                g.drawRect(30, 35 + z, 60, 15);
+                g.drawImage(Plataforma, 500, 0 + y + i, 500 + 45, 45 + 45 + y + i, plataforma * 45, 0, plataforma * 45 + 45, 45, this);
+        }
+        for (int i = 240 - z; i > -100 - y; i -= 210) {
+                g.drawRect(30, 35 + z, 60, 15);
+                g.drawImage(Plataforma, 190, 0 + y + i, 190 + 45, 45 + 45 + y + i, plataforma * 45, 0, plataforma * 45 + 45, 45, this);
+        }
+        for (int i = 115 - z; i > -100 - y; i -= 210) {
+                g.drawRect(30, 35 + z, 60, 15);
+                g.drawImage(Plataforma, 350, 0 + y + i, 350 + 45, 45 + 45 + y + i, plataforma * 45, 0, plataforma * 45 + 45, 45, this);
+        }
+        
+
+        /*    for (int i = 10; i < 1000; i += 100) {
+            for (int j = -120 + y; j > -500 - z; j -= 633) {
+                if (i % 7 == 0) {
+                    g.drawRect(i, j + y + 27, 100, 20);
+                    g.drawImage(Plataforma, i, j + y, 10 + 45 + 50 + i, 10 + 45 + 25 + y + j, plataforma * 4, 0, plataforma * 45 + 45, 45, this);
+                }
+            }
+        }*/
+ /*   for (int i = 50; i < 1000; i += 100) {
+            for (int j = 100 + y; j > -500 - z; j -= 311) {
+                if (i % 7 == 0) {
+                    g.drawRect(i, j + y + 27, 100, 20);
+                    g.drawImage(Plataforma, i, j + y, 10 + 45 + 50 + i, 10 + 45 + 25 + y + j, plataforma * 4, 0, plataforma * 45 + 45, 45, this);
+                }
+            }
+        }*/
+ /* for (int i = 90; i < 1000; i += 100) {
+            for (int j = -120 + y; j > -500 - z; j -= 361) {
+                if ((i % 7 == 0)) {
+                    g.drawRect(i, j + y + 27, 100, 20);
+                    g.drawImage(Plataforma, i, j + y, 10 + 45 + 50 + i, 10 + 45 + 25 + y + j, plataforma * 4, 0, plataforma * 45 + 45, 45, this);
+                }
+            }
+        }*/
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(289+x, p+209, 100, 100);
-        
+        return new Rectangle(289 + x, p + z + 209, 100, 100);
+
     }
 
     public void Gameover() {
-             Rectangle Ninja= getBounds();
-             Rectangle perder = new Rectangle(0,440,640,10);
+        Rectangle Ninja = getBounds();
+        Rectangle perder = new Rectangle(0, 440, 640, 10);
+        if ((Ninja.intersects(perder))) {
 
-             /*for(int i =90;i<1000;i+=100){
-                for(int j = 20+y;j>-500-z;j-=250)
-                    
-                    if((i%7==0)){
-                        Rectangle reto = new Rectangle(i, j+y+27, 100, 20);
-                    
-            
-             */
-             if( (Ninja.intersects(perder))  ){
-            
             System.out.println("GAME OVER");
-            
+
             time.stop();
-            
-             
-                  
-    }
+
+        }
     }
 
     @Override
@@ -153,15 +152,18 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
         } else {
             this.secuencia++;
         }
-        if(this.plataforma==13){
-            this.plataforma=0;
-        }else{
+        if (this.plataforma == 8) {
+            this.plataforma = 0;
+        } else {
             this.plataforma++;
         }
-        z += 5;
-        y += 1;
-        repaint();
+        z += 1;
+        p += 1;
+        w += 1;
+        y += 2;
         Gameover();
+        repaint();
+        
 
     }
 
@@ -210,26 +212,28 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
         @Override
         public void keyPressed(KeyEvent e) {
             int key = e.getKeyCode();
-            
+            int count = 0;
+
             if (key == KeyEvent.VK_RIGHT) {
-                if(x!=270){
-                x += 10;
+                if (x <= 270) {
+                    x += 15;     
                 }
             }
             if (key == KeyEvent.VK_LEFT) {
-                 if(x!=-320){
-                x -= 10;
+                if (x >= -320) {
+                    x -= 15;
                 }
-                
+
             }
             if (key == KeyEvent.VK_UP) {
-                   
                 if(p!=-210){
                     p-= 10;
+                }else{
+                    
                 }
             }
             if (key == KeyEvent.VK_DOWN) {
-                p+= 10;
+                
             }
         }
 
@@ -237,7 +241,8 @@ class NewPanel extends JPanel implements ActionListener, MouseListener{
         public void keyReleased(KeyEvent e) {
 
             int key = e.getKeyCode();
-            if (key == KeyEvent.VK_RIGHT) {
+            if (key == KeyEvent.VK_UP) {
+                
 
             }
         }
