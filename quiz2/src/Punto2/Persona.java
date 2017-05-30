@@ -9,7 +9,7 @@ package Punto2;
  *
  * @author Diego
  */
-    public  abstract class  Persona {
+    public  class  Persona {
     protected String Nombre;
     protected String Apellido; 
 

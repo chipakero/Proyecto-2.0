@@ -17,14 +17,14 @@ import javax.swing.JTextField;
  *
  * @author Diego
  */
-public class Punto1 {
+public class punto2 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-       JFrame frame = new JFrame();   
+         
        Persona p = new Persona("", "") {};
        p.setNombre(JOptionPane.showInputDialog(null,"Enter your fist name"));
        p.setApellido(JOptionPane.showInputDialog(null,"Enter your last name"));
